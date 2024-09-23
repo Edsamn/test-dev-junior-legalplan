@@ -15,29 +15,15 @@
   font-family: var(--font-inter-tight);
 }
 
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
-}
-
 .main {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  grid-row-start: 2;
 }
 
 .header {
   width: 1328px;
   height: 60px;
-  max-width: 1328px;
-  max-height: 60px;
   margin-left: 56px;
   display: flex;
   align-items: center;
@@ -52,21 +38,325 @@
   color: #000000;
 }
 
-.pDate {
+.pDate,
+.pCard {
   font-weight: 400;
   font-size: 16px;
   line-height: 19.36px;
   color: #000000;
+}
+
+.pDate,
+.pCard,
+.pDelete {
   opacity: 54%;
 }
 
-@media (max-width: 600px) {
+.pAction,
+.pCancel,
+.pDelete {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.36px;
+}
+
+.pCancel,
+.pDelete {
+  color: #000000;
+}
+
+.pAction {
+  color: #fff;
+}
+
+.pDelete {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.tasksCard {
+  width: 450px;
+  margin-top: 32px;
+  border-radius: 16px;
+  padding: 32px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid #eaecf0;
+}
+
+.tasks {
+  width: 386px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px dashed #d7dde9;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f7f9fd;
+    border: none;
+  }
+
+  .pTasks,
+  .pTasksDone {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.36px;
+    color: #000000;
+  }
+
+  .pTasksDone {
+    opacity: 54%;
+    text-decoration: line-through;
+  }
+}
+
+.checkBox,
+.checkBoxDone {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.checkBox {
+  border: 1px solid #d7dde9;
+}
+
+.checkBoxDone {
+  border: 1px solid #0796d3;
+  background-color: #a0dcf6;
+}
+
+.modalCreateCard,
+.modalDeleteCard {
+  width: 450px;
+  border-radius: 16px;
+  padding: 32px;
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  box-shadow: 0px 24px 48px -12px rgba(16, 24, 40);
+  background-color: #fff;
+
+  input {
+    width: 386px;
+    height: 51px;
+    padding: 16px;
+    gap: 16px;
+    border-radius: 8px;
+    border: 1px solid #d7dde9;
+    color: rgb(0, 0, 0, 0.56);
+  }
+}
+
+.mainButton {
+  height: 51px;
+  width: 450px;
+  padding: 16px 24px 16px 24px;
+  gap: 8px;
+  background: linear-gradient(90deg, #0796d3, #53c0f0);
+  border-radius: 8px;
+  border-style: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.modalButtonsDiv {
+  width: 386px;
+  height: 51px;
+  gap: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cancelButton,
+.addButton,
+.deleteButton {
+  height: 51px;
+  width: 185px;
+  gap: 8px;
+  padding: 16px 24px 16px 24px;
+  border-radius: 8px;
+  border-style: none;
+  cursor: pointer;
+}
+
+.cancelButton {
+  background-color: #e7eefb;
+}
+
+.addButton {
+  background: linear-gradient(90deg, #0796d3, #53c0f0);
+}
+
+.deleteButton {
+  background: linear-gradient(90deg, #d30707, #f05353);
+}
+
+@media (prefers-color-scheme: dark) {
   .page {
-    padding: 32px;
-    padding-bottom: 80px;
+    --gray-rgb: 255, 255, 255;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+  }
+}
+
+@media (min-width: 321px) {
+  .pTasks,
+  .pTasksDone {
+    margin-right: 150px;
+  }
+}
+
+@media (max-width: 320px) {
+  .page {
+    max-height: 690px;
+    max-width: 320px;
+  }
+
+  .header {
+    width: 272px;
+    height: 114px;
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #d7dde9;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 24px 0 0 0;
+    gap: 8px;
+    padding-bottom: 24px;
+  }
+
+  .pWelcome {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19.36px;
+    color: #000000;
+  }
+
+  .pDate {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.36px;
+    color: #000000;
+    opacity: 54%;
   }
 
   .main {
     align-items: center;
+  }
+
+  .mainButton {
+    height: 51px;
+    width: 272px;
+    padding: 16px 24px 16px 24px;
+    gap: 8px;
+    background: linear-gradient(90deg, #0796d3, #53c0f0);
+    border-radius: 8px;
+    border-style: none;
+    cursor: pointer;
+  }
+
+  .tasksCard {
+    width: 272px;
+    border-radius: 16px;
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid #eaecf0;
+  }
+
+  .tasks {
+    width: 208px;
+    height: 56px;
+    border-radius: 8px;
+    border: 1px dashed #d7dde9;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f7f9fd;
+      border: none;
+    }
+
+    .pTasks,
+    .pTasksDone {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19.36px;
+      color: #000000;
+    }
+
+    .pTasksDone {
+      opacity: 54%;
+      text-decoration: line-through;
+    }
+  }
+
+  .modalCreateCard,
+  .modalDeleteCard {
+    width: 320px;
+    height: 690px;
+    border-radius: 16px;
+    padding: 32px;
+    gap: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-shadow: 0px 24px 48px -12px rgba(16, 24, 40);
+    background-color: #fff;
+
+    input {
+      width: 275px;
+      height: 51px;
+      padding: 16px;
+      gap: 16px;
+      border-radius: 8px;
+      border: 1px solid #d7dde9;
+      color: rgb(0, 0, 0, 0.56);
+    }
+  }
+
+  .modalButtonsDiv {
+    margin-top: 70px;
+    width: 272;
+    height: 118;
+    gap: 16px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+
+  .cancelButton,
+  .addButton,
+  .deleteButton {
+    height: 51px;
+    width: 272px;
+    gap: 8px;
+    padding: 16px 24px 16px 24px;
+    border-radius: 8px;
+    border-style: none;
+    cursor: pointer;
   }
 }
